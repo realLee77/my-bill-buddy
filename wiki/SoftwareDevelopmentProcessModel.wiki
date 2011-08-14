@@ -9,3 +9,5 @@ We will follow *_Evolutionary development model because_*->
 •	We are focusing on IIITD members right now; we will also like to see if any improvement or changes will be required for others.
 
 •	Our project will evolve dynamically and different versions can be launched before final model.
+
+<g:plusone size="medium"></g:plusone>
