@@ -33,3 +33,5 @@ It will be easy to use, Secure - uses encryption to communicate with server. All
 •What about security provisions? (_Encryption will be used to communicate to server and iiitd secure body for transactions_).
 
 •Easy and useful application.
+
+<g:plusone size="medium"></g:plusone>
