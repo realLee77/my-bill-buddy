@@ -29,6 +29,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     private Command okCommand5;
     private Command okCommand6;
     private Command okCommand4;
+    private Command okCommand7;
     private Form form;
     private ImageItem imageItem;
     private StringItem stringItem;
@@ -48,6 +49,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     private TextField textField5;
     private Form form4;
     private StringItem stringItem4;
+    private Alert alert;
     private Image image1;
     //</editor-fold>//GEN-END:|fields|0|
 
@@ -119,64 +121,70 @@ public class ClientApplet extends MIDlet implements CommandListener {
      */
     public void commandAction(Command command, Displayable displayable) {//GEN-END:|7-commandAction|0|7-preCommandAction
         // write pre-action user code here
-        if (displayable == form) {//GEN-BEGIN:|7-commandAction|1|35-preAction
-            if (command == ExistingUser) {//GEN-END:|7-commandAction|1|35-preAction
+        if (displayable == alert) {//GEN-BEGIN:|7-commandAction|1|83-preAction
+            if (command == okCommand7) {//GEN-END:|7-commandAction|1|83-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|2|35-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|2|83-postAction
                 // write post-action user code here
-            } else if (command == Exit) {//GEN-LINE:|7-commandAction|3|19-preAction
+            }//GEN-BEGIN:|7-commandAction|3|35-preAction
+        } else if (displayable == form) {
+            if (command == ExistingUser) {//GEN-END:|7-commandAction|3|35-preAction
                 // write pre-action user code here
-                exitMIDlet();//GEN-LINE:|7-commandAction|4|19-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|4|35-postAction
                 // write post-action user code here
-            } else if (command == NewUser) {//GEN-LINE:|7-commandAction|5|33-preAction
+            } else if (command == Exit) {//GEN-LINE:|7-commandAction|5|19-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm1());//GEN-LINE:|7-commandAction|6|33-postAction
+                exitMIDlet();//GEN-LINE:|7-commandAction|6|19-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|7|25-preAction
+            } else if (command == NewUser) {//GEN-LINE:|7-commandAction|7|33-preAction
+                // write pre-action user code here
+                switchDisplayable(null, getForm1());//GEN-LINE:|7-commandAction|8|33-postAction
+                // write post-action user code here
+            }//GEN-BEGIN:|7-commandAction|9|25-preAction
         } else if (displayable == form1) {
-            if (command == backCommand) {//GEN-END:|7-commandAction|7|25-preAction
+            if (command == backCommand) {//GEN-END:|7-commandAction|9|25-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|8|25-postAction
+                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|10|25-postAction
                 // write post-action user code here
-            } else if (command == okCommand1) {//GEN-LINE:|7-commandAction|9|45-preAction
+            } else if (command == okCommand1) {//GEN-LINE:|7-commandAction|11|45-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|10|45-postAction
+                switchDisplayable(getAlert(), getForm2());//GEN-LINE:|7-commandAction|12|45-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|11|42-preAction
+            }//GEN-BEGIN:|7-commandAction|13|42-preAction
         } else if (displayable == form2) {
-            if (command == backCommand1) {//GEN-END:|7-commandAction|11|42-preAction
+            if (command == backCommand1) {//GEN-END:|7-commandAction|13|42-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|12|42-postAction
+                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|14|42-postAction
                 // write post-action user code here
-            } else if (command == okCommand) {//GEN-LINE:|7-commandAction|13|40-preAction
+            } else if (command == okCommand) {//GEN-LINE:|7-commandAction|15|40-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm3());//GEN-LINE:|7-commandAction|14|40-postAction
+                switchDisplayable(null, getForm3());//GEN-LINE:|7-commandAction|16|40-postAction
                 // write post-action user code here
-            } else if (command == okCommand4) {//GEN-LINE:|7-commandAction|15|65-preAction
+            } else if (command == okCommand4) {//GEN-LINE:|7-commandAction|17|65-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm4());//GEN-LINE:|7-commandAction|16|65-postAction
+                switchDisplayable(null, getForm4());//GEN-LINE:|7-commandAction|18|65-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|17|56-preAction
+            }//GEN-BEGIN:|7-commandAction|19|56-preAction
         } else if (displayable == form3) {
-            if (command == backCommand2) {//GEN-END:|7-commandAction|17|56-preAction
+            if (command == backCommand2) {//GEN-END:|7-commandAction|19|56-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|18|56-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|20|56-postAction
                 // write post-action user code here
-            } else if (command == okCommand2) {//GEN-LINE:|7-commandAction|19|58-preAction
+            } else if (command == okCommand2) {//GEN-LINE:|7-commandAction|21|58-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|20|58-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|22|58-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|21|69-preAction
+            }//GEN-BEGIN:|7-commandAction|23|69-preAction
         } else if (displayable == form4) {
-            if (command == okCommand5) {//GEN-END:|7-commandAction|21|69-preAction
+            if (command == okCommand5) {//GEN-END:|7-commandAction|23|69-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|22|69-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|24|69-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|23|7-postCommandAction
-        }//GEN-END:|7-commandAction|23|7-postCommandAction
+            }//GEN-BEGIN:|7-commandAction|25|7-postCommandAction
+        }//GEN-END:|7-commandAction|25|7-postCommandAction
         // write post-action user code here
-    }//GEN-BEGIN:|7-commandAction|24|
-    //</editor-fold>//GEN-END:|7-commandAction|24|
+    }//GEN-BEGIN:|7-commandAction|26|
+    //</editor-fold>//GEN-END:|7-commandAction|26|
 
     //<editor-fold defaultstate="collapsed" desc=" Generated Getter: Exit ">//GEN-BEGIN:|18-getter|0|18-preInit
     /**
@@ -724,6 +732,39 @@ public class ClientApplet extends MIDlet implements CommandListener {
         return textField7;
     }
     //</editor-fold>//GEN-END:|80-getter|2|
+
+    //<editor-fold defaultstate="collapsed" desc=" Generated Getter: okCommand7 ">//GEN-BEGIN:|82-getter|0|82-preInit
+    /**
+     * Returns an initiliazed instance of okCommand7 component.
+     * @return the initialized component instance
+     */
+    public Command getOkCommand7() {
+        if (okCommand7 == null) {//GEN-END:|82-getter|0|82-preInit
+            // write pre-init user code here
+            okCommand7 = new Command("Ok", Command.OK, 0);//GEN-LINE:|82-getter|1|82-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|82-getter|2|
+        return okCommand7;
+    }
+    //</editor-fold>//GEN-END:|82-getter|2|
+
+    //<editor-fold defaultstate="collapsed" desc=" Generated Getter: alert ">//GEN-BEGIN:|81-getter|0|81-preInit
+    /**
+     * Returns an initiliazed instance of alert component.
+     * @return the initialized component instance
+     */
+    public Alert getAlert() {
+        if (alert == null) {//GEN-END:|81-getter|0|81-preInit
+            // write pre-init user code here
+            alert = new Alert("alert", "Congratulations! You are now successfully registered.", getImage1(), null);//GEN-BEGIN:|81-getter|1|81-postInit
+            alert.addCommand(getOkCommand7());
+            alert.setCommandListener(this);
+            alert.setTimeout(Alert.FOREVER);//GEN-END:|81-getter|1|81-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|81-getter|2|
+        return alert;
+    }
+    //</editor-fold>//GEN-END:|81-getter|2|
 
     /**
      * Returns a display instance.

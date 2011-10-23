@@ -114,6 +114,12 @@
                     <Property name="label" typeID="Pjava.lang.String" value="VCheck Balance"/>
                     <Property name="type" typeID="Pint" value="V4"/>
                 </Component>
+                <Component componentID="82" typeID="Cjavax.microedition.lcdui.Command">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand7"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="label" typeID="Pjava.lang.String" value="VOk"/>
+                    <Property name="type" typeID="Pint" value="V4"/>
+                </Component>
             </Component>
             <Component componentID="10" typeID="C#DisplayablesCategory">
                 <Component componentID="14" typeID="Cjavax.microedition.lcdui.Form">
@@ -203,6 +209,7 @@
                         <Component componentID="77" typeID="C#SwitchDisplayableEventHandler">
                             <Property name="eventSource" typeID="C#EventSource" value="R45"/>
                             <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R37"/>
+                            <Property name="alert" typeID="Cjavax.microedition.lcdui.Alert" value="R81"/>
                         </Component>
                     </Component>
                     <Component componentID="50" typeID="Cjavax.microedition.lcdui.TextField">
@@ -361,6 +368,25 @@
                         <Property name="text" typeID="Pjava.lang.String" value="VYour account balnce is Rs. *****.**"/>
                     </Component>
                 </Component>
+                <Component componentID="81" typeID="Cjavax.microedition.lcdui.Alert">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="Valert"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="commands" typeID="1C#CommandEventSource" value="A1:3_R83"/>
+                    <Property name="title" typeID="Pjava.lang.String" value="Valert"/>
+                    <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
+                    <Property name="image" typeID="Cjavax.microedition.lcdui.Image" value="R31"/>
+                    <Property name="string" typeID="Pjava.lang.String" value="VCongratulations! You are now successfully registered."/>
+                    <Property name="timeout" typeID="Pint" value="V-2"/>
+                    <Component componentID="83" typeID="C#CommandEventSource">
+                        <Property name="eventHandler" typeID="C#EventHandler" value="R84"/>
+                        <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R81"/>
+                        <Property name="command" typeID="Cjavax.microedition.lcdui.Command" value="R82"/>
+                        <Component componentID="84" typeID="C#SwitchDisplayableEventHandler">
+                            <Property name="eventSource" typeID="C#EventSource" value="R83"/>
+                            <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R37"/>
+                        </Component>
+                    </Component>
+                </Component>
             </Component>
             <Component componentID="13" typeID="C#ResourcesCategory">
                 <Component componentID="31" typeID="Cjavax.microedition.lcdui.Image">
@@ -373,11 +399,12 @@
         </Component>
     </Document>
     <FlowScene version="1">
-        <Node componentID="53" descriptorID="componentNode53" x="727" y="86"/>
+        <Node componentID="81" descriptorID="componentNode81" x="825" y="283"/>
         <Node componentID="14" descriptorID="componentNode14" x="268" y="181"/>
-        <Node componentID="66" descriptorID="componentNode66" x="62" y="253"/>
-        <Node componentID="2" descriptorID="componentNode2" x="34" y="32"/>
-        <Node componentID="23" descriptorID="componentNode23" x="545" y="89"/>
         <Node componentID="37" descriptorID="componentNode37" x="563" y="320"/>
+        <Node componentID="53" descriptorID="componentNode53" x="727" y="86"/>
+        <Node componentID="66" descriptorID="componentNode66" x="62" y="253"/>
+        <Node componentID="23" descriptorID="componentNode23" x="545" y="89"/>
+        <Node componentID="2" descriptorID="componentNode2" x="34" y="32"/>
     </FlowScene>
 </VisualDesign>
