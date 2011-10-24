@@ -124,7 +124,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
         if (displayable == alert) {//GEN-BEGIN:|7-commandAction|1|83-preAction
             if (command == okCommand7) {//GEN-END:|7-commandAction|1|83-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|2|83-postAction
+                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|2|83-postAction
                 // write post-action user code here
             }//GEN-BEGIN:|7-commandAction|3|35-preAction
         } else if (displayable == form) {
@@ -148,7 +148,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
                 // write post-action user code here
             } else if (command == okCommand1) {//GEN-LINE:|7-commandAction|11|45-preAction
                 // write pre-action user code here
-                switchDisplayable(getAlert(), getForm2());//GEN-LINE:|7-commandAction|12|45-postAction
+                switchDisplayable(getAlert(), getForm1());//GEN-LINE:|7-commandAction|12|45-postAction
                 // write post-action user code here
             }//GEN-BEGIN:|7-commandAction|13|42-preAction
         } else if (displayable == form2) {
@@ -756,7 +756,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public Alert getAlert() {
         if (alert == null) {//GEN-END:|81-getter|0|81-preInit
             // write pre-init user code here
-            alert = new Alert("alert", "Congratulations! You are now successfully registered.", getImage1(), null);//GEN-BEGIN:|81-getter|1|81-postInit
+            alert = new Alert("alert", "Congratulations! You are now successfully registered.", null, null);//GEN-BEGIN:|81-getter|1|81-postInit
             alert.addCommand(getOkCommand7());
             alert.setCommandListener(this);
             alert.setTimeout(Alert.FOREVER);//GEN-END:|81-getter|1|81-postInit
