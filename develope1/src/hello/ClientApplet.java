@@ -30,6 +30,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     private Command okCommand6;
     private Command okCommand4;
     private Command okCommand7;
+    private Command okCommand8;
     private Form form;
     private ImageItem imageItem;
     private StringItem stringItem;
@@ -50,6 +51,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     private Form form4;
     private StringItem stringItem4;
     private Alert alert;
+    private Alert alert1;
     private Image image1;
     //</editor-fold>//GEN-END:|fields|0|
 
@@ -164,27 +166,31 @@ public class ClientApplet extends MIDlet implements CommandListener {
                 // write pre-action user code here
                 switchDisplayable(null, getForm4());//GEN-LINE:|7-commandAction|18|65-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|19|56-preAction
+            } else if (command == okCommand8) {//GEN-LINE:|7-commandAction|19|86-preAction
+                // write pre-action user code here
+                switchDisplayable(getAlert1(), getForm());//GEN-LINE:|7-commandAction|20|86-postAction
+                // write post-action user code here
+            }//GEN-BEGIN:|7-commandAction|21|56-preAction
         } else if (displayable == form3) {
-            if (command == backCommand2) {//GEN-END:|7-commandAction|19|56-preAction
+            if (command == backCommand2) {//GEN-END:|7-commandAction|21|56-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|20|56-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|22|56-postAction
                 // write post-action user code here
-            } else if (command == okCommand2) {//GEN-LINE:|7-commandAction|21|58-preAction
+            } else if (command == okCommand2) {//GEN-LINE:|7-commandAction|23|58-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|22|58-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|24|58-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|23|69-preAction
+            }//GEN-BEGIN:|7-commandAction|25|69-preAction
         } else if (displayable == form4) {
-            if (command == okCommand5) {//GEN-END:|7-commandAction|23|69-preAction
+            if (command == okCommand5) {//GEN-END:|7-commandAction|25|69-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|24|69-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|26|69-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|25|7-postCommandAction
-        }//GEN-END:|7-commandAction|25|7-postCommandAction
+            }//GEN-BEGIN:|7-commandAction|27|7-postCommandAction
+        }//GEN-END:|7-commandAction|27|7-postCommandAction
         // write post-action user code here
-    }//GEN-BEGIN:|7-commandAction|26|
-    //</editor-fold>//GEN-END:|7-commandAction|26|
+    }//GEN-BEGIN:|7-commandAction|28|
+    //</editor-fold>//GEN-END:|7-commandAction|28|
 
     //<editor-fold defaultstate="collapsed" desc=" Generated Getter: Exit ">//GEN-BEGIN:|18-getter|0|18-preInit
     /**
@@ -342,6 +348,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
             form2.addCommand(getOkCommand());
             form2.addCommand(getBackCommand1());
             form2.addCommand(getOkCommand4());
+            form2.addCommand(getOkCommand8());
             form2.setCommandListener(this);//GEN-END:|37-getter|1|37-postInit
             // write post-init user code here
         }//GEN-BEGIN:|37-getter|2|
@@ -571,7 +578,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public TextField getTextField1() {
         if (textField1 == null) {//GEN-END:|49-getter|0|49-preInit
             // write pre-init user code here
-            textField1 = new TextField("Password", null, 32, TextField.ANY);//GEN-LINE:|49-getter|1|49-postInit
+            textField1 = new TextField("Password", null, 32, TextField.ANY | TextField.PASSWORD);//GEN-LINE:|49-getter|1|49-postInit
             // write post-init user code here
         }//GEN-BEGIN:|49-getter|2|
         return textField1;
@@ -586,7 +593,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public TextField getTextField2() {
         if (textField2 == null) {//GEN-END:|50-getter|0|50-preInit
             // write pre-init user code here
-            textField2 = new TextField("Phone Number", null, 32, TextField.ANY);//GEN-LINE:|50-getter|1|50-postInit
+            textField2 = new TextField("Phone Number", null, 32, TextField.NUMERIC);//GEN-LINE:|50-getter|1|50-postInit
             // write post-init user code here
         }//GEN-BEGIN:|50-getter|2|
         return textField2;
@@ -726,7 +733,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public TextField getTextField7() {
         if (textField7 == null) {//GEN-END:|80-getter|0|80-preInit
             // write pre-init user code here
-            textField7 = new TextField("Application Password", null, 32, TextField.ANY);//GEN-LINE:|80-getter|1|80-postInit
+            textField7 = new TextField("Application Password", null, 32, TextField.ANY | TextField.PASSWORD);//GEN-LINE:|80-getter|1|80-postInit
             // write post-init user code here
         }//GEN-BEGIN:|80-getter|2|
         return textField7;
@@ -756,15 +763,65 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public Alert getAlert() {
         if (alert == null) {//GEN-END:|81-getter|0|81-preInit
             // write pre-init user code here
-            alert = new Alert("alert", "Congratulations! You are now successfully registered.", null, null);//GEN-BEGIN:|81-getter|1|81-postInit
+            String s,k;
+            k =getTextField().getString();
+            
+            if (k.length() > 0 && getTextField1().getString().length() > 0 && getTextField6().getString().length() > 0 &&  getTextField2().getString().length() > 0 && getTextField7().getString().length() > 0)
+            {
+                if (k.indexOf("@")>0)
+                    s = "Data Sent. Avaiting reply!!";
+                else
+                    s = "Invalid Email Address";
+                
+            }
+            else
+                s = "Kindly fill all entries!!!";
+            /*
+alert = new Alert ("alert", "", null, null);//GEN-BEGIN:|81-getter|1|81-postInit
+alert.addCommand (getOkCommand7 ());
+alert.setCommandListener (this);
+alert.setTimeout (Alert.FOREVER);//GEN-END:|81-getter|1|81-postInit
+            */
+            alert = new Alert("alert", s, null, null);
             alert.addCommand(getOkCommand7());
             alert.setCommandListener(this);
-            alert.setTimeout(Alert.FOREVER);//GEN-END:|81-getter|1|81-postInit
+            alert.setTimeout(Alert.FOREVER);
             // write post-init user code here
         }//GEN-BEGIN:|81-getter|2|
         return alert;
     }
     //</editor-fold>//GEN-END:|81-getter|2|
+
+    //<editor-fold defaultstate="collapsed" desc=" Generated Getter: okCommand8 ">//GEN-BEGIN:|85-getter|0|85-preInit
+    /**
+     * Returns an initiliazed instance of okCommand8 component.
+     * @return the initialized component instance
+     */
+    public Command getOkCommand8() {
+        if (okCommand8 == null) {//GEN-END:|85-getter|0|85-preInit
+            // write pre-init user code here
+            okCommand8 = new Command("Forgot Password!!", Command.OK, 0);//GEN-LINE:|85-getter|1|85-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|85-getter|2|
+        return okCommand8;
+    }
+    //</editor-fold>//GEN-END:|85-getter|2|
+
+    //<editor-fold defaultstate="collapsed" desc=" Generated Getter: alert1 ">//GEN-BEGIN:|87-getter|0|87-preInit
+    /**
+     * Returns an initiliazed instance of alert1 component.
+     * @return the initialized component instance
+     */
+    public Alert getAlert1() {
+        if (alert1 == null) {//GEN-END:|87-getter|0|87-preInit
+            // write pre-init user code here
+            alert1 = new Alert("Reset Password", "Kindly contact administrator to reset password", null, null);//GEN-BEGIN:|87-getter|1|87-postInit
+            alert1.setTimeout(Alert.FOREVER);//GEN-END:|87-getter|1|87-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|87-getter|2|
+        return alert1;
+    }
+    //</editor-fold>//GEN-END:|87-getter|2|
 
     /**
      * Returns a display instance.
