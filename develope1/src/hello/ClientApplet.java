@@ -766,15 +766,22 @@ public class ClientApplet extends MIDlet implements CommandListener {
             String s,k;
             k =getTextField().getString();
             
-            if (k.length() > 0 && getTextField1().getString().length() > 0 && getTextField6().getString().length() > 0 &&  getTextField2().getString().length() > 0 && getTextField7().getString().length() > 0)
+       
+            if (k.length() > 0 && getTextField1().getString().length() > 0 && getTextField6().getString().length() > 0 &&  getTextField2().getString().length() == 10 && getTextField7().getString().length() > 0)
             {
-                if (k.indexOf("@")>0)
-                    s = "Data Sent. Avaiting reply!!";
+                if (k.endsWith("@iiitd.ac.in"));
                 else
-                    s = "Invalid Email Address";
+                   // k.concat("@iiitd.ac.in");
+                    getTextField().setString(k.concat("@iiitd.ac.in"));
+                    s = "Data Sent. Awaiting reply!!";
+               
                 
             }
+               
             else
+                if(getTextField2().getString().length()!=10)
+                    s = "Invalid phone number";
+                 else      
                 s = "Kindly fill all entries!!!";
             /*
 alert = new Alert ("alert", "", null, null);//GEN-BEGIN:|81-getter|1|81-postInit

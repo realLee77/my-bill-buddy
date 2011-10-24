@@ -114,16 +114,16 @@
                     <Property name="label" typeID="Pjava.lang.String" value="VCheck Balance"/>
                     <Property name="type" typeID="Pint" value="V4"/>
                 </Component>
-                <Component componentID="82" typeID="Cjavax.microedition.lcdui.Command">
-                    <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand7"/>
-                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
-                    <Property name="label" typeID="Pjava.lang.String" value="VOk"/>
-                    <Property name="type" typeID="Pint" value="V4"/>
-                </Component>
                 <Component componentID="85" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand8"/>
                     <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VForgot Password!!"/>
+                    <Property name="type" typeID="Pint" value="V4"/>
+                </Component>
+                <Component componentID="82" typeID="Cjavax.microedition.lcdui.Command">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand7"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="label" typeID="Pjava.lang.String" value="VOk"/>
                     <Property name="type" typeID="Pint" value="V4"/>
                 </Component>
             </Component>
@@ -384,6 +384,14 @@
                         <Property name="text" typeID="Pjava.lang.String" value="VYour account balnce is Rs. *****.**"/>
                     </Component>
                 </Component>
+                <Component componentID="87" typeID="Cjavax.microedition.lcdui.Alert">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="Valert1"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="title" typeID="Pjava.lang.String" value="VReset Password"/>
+                    <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
+                    <Property name="string" typeID="Pjava.lang.String" value="VKindly contact administrator to reset password"/>
+                    <Property name="timeout" typeID="Pint" value="V-2"/>
+                </Component>
                 <Component componentID="81" typeID="Cjavax.microedition.lcdui.Alert">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="Valert"/>
                     <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
@@ -402,14 +410,6 @@
                         </Component>
                     </Component>
                 </Component>
-                <Component componentID="87" typeID="Cjavax.microedition.lcdui.Alert">
-                    <Property name="instanceName" typeID="Pjava.lang.String" value="Valert1"/>
-                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
-                    <Property name="title" typeID="Pjava.lang.String" value="VReset Password"/>
-                    <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
-                    <Property name="string" typeID="Pjava.lang.String" value="VKindly contact administrator to reset password"/>
-                    <Property name="timeout" typeID="Pint" value="V-2"/>
-                </Component>
             </Component>
             <Component componentID="13" typeID="C#ResourcesCategory">
                 <Component componentID="31" typeID="Cjavax.microedition.lcdui.Image">
@@ -422,13 +422,13 @@
         </Component>
     </Document>
     <FlowScene version="1">
-        <Node componentID="37" descriptorID="componentNode37" x="589" y="319"/>
-        <Node componentID="53" descriptorID="componentNode53" x="727" y="86"/>
-        <Node componentID="23" descriptorID="componentNode23" x="545" y="89"/>
-        <Node componentID="14" descriptorID="componentNode14" x="268" y="181"/>
-        <Node componentID="87" descriptorID="componentNode87" x="381" y="324"/>
-        <Node componentID="66" descriptorID="componentNode66" x="62" y="253"/>
         <Node componentID="81" descriptorID="componentNode81" x="825" y="283"/>
         <Node componentID="2" descriptorID="componentNode2" x="34" y="32"/>
+        <Node componentID="23" descriptorID="componentNode23" x="545" y="89"/>
+        <Node componentID="37" descriptorID="componentNode37" x="589" y="319"/>
+        <Node componentID="87" descriptorID="componentNode87" x="381" y="324"/>
+        <Node componentID="66" descriptorID="componentNode66" x="62" y="253"/>
+        <Node componentID="14" descriptorID="componentNode14" x="268" y="181"/>
+        <Node componentID="53" descriptorID="componentNode53" x="727" y="86"/>
     </FlowScene>
 </VisualDesign>
