@@ -232,7 +232,7 @@
                         <Property name="label" typeID="Pjava.lang.String" value="VIIIT-D Email Address"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
                         <Property name="maxSize" typeID="Pint" value="V32"/>
-                        <Property name="constraints" typeID="Pint" value="V0"/>
+                        <Property name="constraints" typeID="Pint" value="V1"/>
                     </Component>
                     <Component componentID="79" typeID="Cjavax.microedition.lcdui.TextField">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VtextField6"/>
@@ -288,7 +288,7 @@
                         <Property name="label" typeID="Pjava.lang.String" value="VPassword"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
                         <Property name="maxSize" typeID="Pint" value="V32"/>
-                        <Property name="constraints" typeID="Pint" value="V0"/>
+                        <Property name="constraints" typeID="Pint" value="V65536"/>
                     </Component>
                     <Component componentID="65" typeID="C#CommandEventSource">
                         <Property name="eventHandler" typeID="C#EventHandler" value="R67"/>
@@ -414,13 +414,13 @@
         </Component>
     </Document>
     <FlowScene version="1">
+        <Node componentID="81" descriptorID="componentNode81" x="502" y="239"/>
+        <Node componentID="2" descriptorID="componentNode2" x="34" y="32"/>
         <Node componentID="14" descriptorID="componentNode14" x="362" y="43"/>
         <Node componentID="37" descriptorID="componentNode37" x="635" y="538"/>
-        <Node componentID="87" descriptorID="componentNode87" x="167" y="533"/>
-        <Node componentID="2" descriptorID="componentNode2" x="34" y="32"/>
-        <Node componentID="23" descriptorID="componentNode23" x="45" y="258"/>
-        <Node componentID="81" descriptorID="componentNode81" x="502" y="239"/>
         <Node componentID="53" descriptorID="componentNode53" x="790" y="141"/>
+        <Node componentID="87" descriptorID="componentNode87" x="167" y="533"/>
+        <Node componentID="23" descriptorID="componentNode23" x="45" y="258"/>
         <Node componentID="66" descriptorID="componentNode66" x="496" y="456"/>
     </FlowScene>
 </VisualDesign>

@@ -15,7 +15,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     
     private boolean midletPaused = false;
     
-    private String messege, server = "9716343684";
+    private String messege, s, reply, server = "9716343684";
     MessageConnection clientConn;
 //<editor-fold defaultstate="collapsed" desc=" Generated Fields ">//GEN-BEGIN:|fields|0|
     private Command Exit;
@@ -462,7 +462,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public TextField getTextField() {
         if (textField == null) {//GEN-END:|48-getter|0|48-preInit
             // write pre-init user code here
-            textField = new TextField("IIIT-D Email Address", null, 32, TextField.ANY);//GEN-LINE:|48-getter|1|48-postInit
+            textField = new TextField("IIIT-D Email Address", null, 32, TextField.EMAILADDR);//GEN-LINE:|48-getter|1|48-postInit
             // write post-init user code here
         }//GEN-BEGIN:|48-getter|2|
         return textField;
@@ -614,7 +614,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public TextField getTextField3() {
         if (textField3 == null) {//GEN-END:|52-getter|0|52-preInit
             // write pre-init user code here
-            textField3 = new TextField("Password", null, 32, TextField.ANY);//GEN-LINE:|52-getter|1|52-postInit
+            textField3 = new TextField("Password", null, 32, TextField.ANY | TextField.PASSWORD);//GEN-LINE:|52-getter|1|52-postInit
             // write post-init user code here
         }//GEN-BEGIN:|52-getter|2|
         return textField3;
@@ -754,7 +754,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public Alert getAlert() {
         if (alert == null) {//GEN-END:|81-getter|0|81-preInit
             // write pre-init user code here
-            String s,k;
+            String k;
             k =getTextField().getString();
             
        
@@ -766,7 +766,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
                     getTextField().setString(k.concat("@iiitd.ac.in"));
                 
                 messege = "mbb_REG_"+getTextField().getString()+"_"+getTextField6().getString()+"_"+getTextField2().getString()+"_"+getTextField7().getString();
-                
+                /*
                 try {
                               clientConn=(MessageConnection)Connector.open("sms://"+server);
                         }
@@ -789,8 +789,44 @@ public class ClientApplet extends MIDlet implements CommandListener {
                               alert.setString("Unable to send");
                               display.setCurrent(alert);
                         }
-                
-                s = "Data Sent. Awaiting reply!!";
+                     
+                     try{   
+			 clientConn.setMessageListener(
+				new MessageListener() 
+				 {
+                                     public void notifyIncomingMessage(MessageConnection clientConn)
+					 {
+                                            try{
+						 Message msg = clientConn.receive();
+
+						 if(msg instanceof TextMessage) {
+							 TextMessage tmsg = (TextMessage) msg;
+							 reply = tmsg.getPayloadText();
+							 System.out.println(tmsg.getPayloadText());
+                                                         if (reply.startsWith("OK"))
+                                                                s = " Registration Successfull!!\nPlease Deposit the starting amount to activate your account.!!";
+                                                         else if (reply.startsWith("Fail"))
+                                                                 s = "Registration unsuccessfull!\n Please contact the adminisstration or Try Again.";
+                                                         //else
+                                                           //  s = "Data Sent. Awaiting reply!!";
+                    				  }
+				      	    }
+					    catch(Exception e)
+					    {
+										 
+                            		    }
+                       		         }
+                		 }
+        		   );  
+		      }
+		      catch(Exception e)
+	      	      {
+
+		      }
+				 
+            */
+
+	 s = "Data Sent. Awaiting reply!!";
                System.out.println(getTextField().getString());
                 
             }
