@@ -138,26 +138,26 @@
                     <Property name="priority" typeID="Pint" value="V0"/>
                     <Property name="ordinary" typeID="Pboolean" value="Vfalse"/>
                 </Component>
-                <Component componentID="105" typeID="Cjavax.microedition.lcdui.Command">
-                    <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand9"/>
-                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
-                    <Property name="label" typeID="Pjava.lang.String" value="VOk"/>
-                    <Property name="type" typeID="Pint" value="V4"/>
-                </Component>
                 <Component componentID="110" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand10"/>
                     <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VOk"/>
                     <Property name="type" typeID="Pint" value="V4"/>
                 </Component>
-                <Component componentID="113" typeID="Cjavax.microedition.lcdui.Command">
-                    <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand11"/>
+                <Component componentID="105" typeID="Cjavax.microedition.lcdui.Command">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand9"/>
                     <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VOk"/>
                     <Property name="type" typeID="Pint" value="V4"/>
                 </Component>
                 <Component componentID="118" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand12"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="label" typeID="Pjava.lang.String" value="VOk"/>
+                    <Property name="type" typeID="Pint" value="V4"/>
+                </Component>
+                <Component componentID="113" typeID="Cjavax.microedition.lcdui.Command">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand11"/>
                     <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VOk"/>
                     <Property name="type" typeID="Pint" value="V4"/>
@@ -250,7 +250,7 @@
                         <Property name="command" typeID="Cjavax.microedition.lcdui.Command" value="R44"/>
                         <Component componentID="93" typeID="C#SwitchDisplayableEventHandler">
                             <Property name="eventSource" typeID="C#EventSource" value="R45"/>
-                            <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R23"/>
+                            <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R14"/>
                             <Property name="alert" typeID="Cjavax.microedition.lcdui.Alert" value="R81"/>
                         </Component>
                     </Component>
@@ -456,13 +456,18 @@
                     <Property name="instanceName" typeID="Pjava.lang.String" value="Valert3"/>
                     <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A1:4_R119"/>
-                    <Property name="title" typeID="Pjava.lang.String" value="Valert3"/>
+                    <Property name="title" typeID="Pjava.lang.String" value="VAlert"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
                     <Property name="string" typeID="Pjava.lang.String" value="VMessage sent. Await response."/>
                     <Property name="timeout" typeID="Pint" value="V-2"/>
                     <Component componentID="119" typeID="C#CommandEventSource">
+                        <Property name="eventHandler" typeID="C#EventHandler" value="R121"/>
                         <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R115"/>
                         <Property name="command" typeID="Cjavax.microedition.lcdui.Command" value="R118"/>
+                        <Component componentID="121" typeID="C#SwitchDisplayableEventHandler">
+                            <Property name="eventSource" typeID="C#EventSource" value="R119"/>
+                            <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R37"/>
+                        </Component>
                     </Component>
                 </Component>
             </Component>
@@ -481,15 +486,15 @@
         </Component>
     </Document>
     <FlowScene version="1">
-        <Node componentID="23" descriptorID="componentNode23" x="45" y="258"/>
-        <Node componentID="109" descriptorID="componentNode109" x="1010" y="173"/>
-        <Node componentID="2" descriptorID="componentNode2" x="34" y="32"/>
-        <Node componentID="94" descriptorID="componentNode94" x="975" y="439"/>
-        <Node componentID="115" descriptorID="componentNode115" x="995" y="615"/>
+        <Node componentID="81" descriptorID="componentNode81" x="214" y="376"/>
+        <Node componentID="115" descriptorID="componentNode115" x="558" y="543"/>
         <Node componentID="87" descriptorID="componentNode87" x="167" y="533"/>
-        <Node componentID="81" descriptorID="componentNode81" x="502" y="239"/>
-        <Node componentID="14" descriptorID="componentNode14" x="362" y="43"/>
-        <Node componentID="53" descriptorID="componentNode53" x="790" y="141"/>
-        <Node componentID="37" descriptorID="componentNode37" x="635" y="538"/>
+        <Node componentID="109" descriptorID="componentNode109" x="820" y="73"/>
+        <Node componentID="94" descriptorID="componentNode94" x="985" y="446"/>
+        <Node componentID="53" descriptorID="componentNode53" x="788" y="246"/>
+        <Node componentID="2" descriptorID="componentNode2" x="34" y="32"/>
+        <Node componentID="23" descriptorID="componentNode23" x="45" y="258"/>
+        <Node componentID="14" descriptorID="componentNode14" x="486" y="63"/>
+        <Node componentID="37" descriptorID="componentNode37" x="500" y="253"/>
     </FlowScene>
 </VisualDesign>

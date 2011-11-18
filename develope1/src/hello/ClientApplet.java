@@ -39,10 +39,10 @@ public class ClientApplet extends MIDlet implements CommandListener {
     private Command okCommand4;
     private Command okCommand8;
     private Command okCommand7;
-    private Command okCommand9;
     private Command okCommand10;
-    private Command okCommand11;
+    private Command okCommand9;
     private Command okCommand12;
+    private Command okCommand11;
     private Form form;
     private ImageItem imageItem;
     private StringItem stringItem;
@@ -152,7 +152,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
         } else if (displayable == alert3) {
             if (command == okCommand12) {//GEN-END:|7-commandAction|5|119-preAction
                 // write pre-action user code here
-//GEN-LINE:|7-commandAction|6|119-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|6|119-postAction
                 // write post-action user code here
             }//GEN-BEGIN:|7-commandAction|7|114-preAction
         } else if (displayable == alert4) {
@@ -182,7 +182,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
                 // write post-action user code here
             } else if (command == okCommand1) {//GEN-LINE:|7-commandAction|17|45-preAction
                 // write pre-action user code here
-                switchDisplayable(getAlert(), getForm1());//GEN-LINE:|7-commandAction|18|45-postAction
+                switchDisplayable(getAlert(), getForm());//GEN-LINE:|7-commandAction|18|45-postAction
                 // write post-action user code here
             }//GEN-BEGIN:|7-commandAction|19|42-preAction
         } else if (displayable == form2) {
@@ -930,9 +930,11 @@ public class ClientApplet extends MIDlet implements CommandListener {
                     alert2.setTimeout(Alert.FOREVER);
                 }
                 else
-                    Pass = new String (rstore.getRecord(0));
+                    System.out.println(rstore.getNumRecords());
+                    Pass = new String(rstore.getRecord(1), 0, rstore.getRecord(1).length);
+                System.out.println(Pass);
                 
-                if (Equals(Pass, getTextField3().getString()) == false)
+                if (!Pass.equalsIgnoreCase(getTextField3().getString()))
                 {
                     msg = "Incorrect Password!";
                     alert2 = new Alert("Warning",msg,null,null);
@@ -1122,15 +1124,58 @@ public class ClientApplet extends MIDlet implements CommandListener {
             // write pre-init user code here
             
             //tring x = textField3.getString();
+            String Pass = "";
+            String msg = "";
+            try {
+                rstore = RecordStore.openRecordStore("Store", true);
+                
+                if (getTextField3().getString().length() <= 0)
+                {
+                    msg = "Please Enter Password!";
+                    alert3 = new Alert("Alert",msg, null, null);
+                    alert3.addCommand(getOkCommand12());
+                    alert3.setCommandListener(this);
+                    alert3.setTimeout(Alert.FOREVER);
+                }
+                else if (rstore.getNumRecords() == 0)
+                {
+                    msg = "Please Register";
+                    alert3 = new Alert("Alert",msg, null, null);
+                    alert3.addCommand(getOkCommand12());
+                    alert3.setCommandListener(this);
+                    alert3.setTimeout(Alert.FOREVER);
+                }
+                else
+                    System.out.println(rstore.getNumRecords());
+                    Pass = new String(rstore.getRecord(1), 0, rstore.getRecord(1).length);
+                //System.out.println(Pass);
+                } catch (RecordStoreException ex) {
+                    ex.printStackTrace();
+            
+                }
+                if (!Pass.equalsIgnoreCase(getTextField3().getString()))
+                {
+                    msg = "Incorrect Password!";
+                    alert3 = new Alert("Alert",msg, null, null);
+                    alert3.addCommand(getOkCommand12());
+                    alert3.setCommandListener(this);
+                    alert3.setTimeout(Alert.FOREVER);
+                }
+                    
+            else
+                {
+            
+            
             messege = "pm_CBAL";
             try {
                               clientConn=(MessageConnection)Connector.open("sms://"+server);
                         }
                         catch(Exception e) {
-                              alert = new Alert("Alert");
-                              alert.setString("Unable to connect to Station because of network problem");
-                              alert.setTimeout(2000);
-                              display.setCurrent(alert);
+                              
+                              alert3 = new Alert("Alert", "Unable to connect to Station because of network problem", null, null);
+                              alert3.addCommand(getOkCommand12());
+                              alert3.setCommandListener(this);
+                              alert3.setTimeout(Alert.FOREVER);
                         }
                         try {
                               TextMessage textmessage = (TextMessage) clientConn.newMessage(MessageConnection.TEXT_MESSAGE);
@@ -1145,13 +1190,17 @@ public class ClientApplet extends MIDlet implements CommandListener {
                               alert.setString("Unable to send");
                               display.setCurrent(alert);
                         }
-            
-            
-            alert3 = new Alert("alert3", "Message sent. Await response.", null, null);//GEN-BEGIN:|115-getter|1|115-postInit
-            alert3.addCommand(getOkCommand12());
-            alert3.setCommandListener(this);
-            alert3.setTimeout(Alert.FOREVER);//GEN-END:|115-getter|1|115-postInit
-            // write post-init user code here
+                        alert3 = new Alert("Alert", "Message sent. Await response.", null, null);
+                        alert3.addCommand(getOkCommand12());
+                        alert3.setCommandListener(this);
+                        alert3.setTimeout(Alert.FOREVER);
+                }
+            /*
+            alert3 = new Alert ("Alert", "Message sent. Await response.", null, null);//GEN-BEGIN:|115-getter|1|115-postInit
+            alert3.addCommand (getOkCommand12 ());
+            alert3.setCommandListener (this);
+            alert3.setTimeout (Alert.FOREVER);//GEN-END:|115-getter|1|115-postInit
+            // write post-init user code here*/
         }//GEN-BEGIN:|115-getter|2|
         return alert3;
     }
@@ -1199,11 +1248,14 @@ public class ClientApplet extends MIDlet implements CommandListener {
     {
         try {
             rstore = RecordStore.openRecordStore("Store", true);
+            System.out.println(pass);
             byte [] x = pass.getBytes();
             rstore.addRecord(x, 0, x.length);
         } catch (RecordStoreException ex) {
             ex.printStackTrace();
+            System.out.println(pass);
         }  
+        System.out.println(pass+"12");
     }
     
     private boolean Equals(String x, String y)
