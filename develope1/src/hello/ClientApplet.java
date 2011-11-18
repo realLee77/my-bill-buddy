@@ -4,18 +4,22 @@
  */
 package hello;
 
+import javax.microedition.rms.*;
 import javax.microedition.midlet.*;
 import javax.microedition.lcdui.*;
 import javax.microedition.io.*;
 import javax.wireless.messaging.*;
+import org.netbeans.microedition.lcdui.WaitScreen;
+import org.netbeans.microedition.util.SimpleCancellableTask;
 /**
  * @author Abhinav
  */
 public class ClientApplet extends MIDlet implements CommandListener {
     
     private boolean midletPaused = false;
-    
-    private String messege, s, reply, server = "9716343684";
+    private RecordStore rstore;
+    //Alert nalert;
+    private String messege, s, reply, server = "+918826561956";
     MessageConnection clientConn;
 //<editor-fold defaultstate="collapsed" desc=" Generated Fields ">//GEN-BEGIN:|fields|0|
     private Command Exit;
@@ -35,6 +39,10 @@ public class ClientApplet extends MIDlet implements CommandListener {
     private Command okCommand4;
     private Command okCommand8;
     private Command okCommand7;
+    private Command okCommand9;
+    private Command okCommand10;
+    private Command okCommand11;
+    private Command okCommand12;
     private Form form;
     private ImageItem imageItem;
     private StringItem stringItem;
@@ -51,11 +59,13 @@ public class ClientApplet extends MIDlet implements CommandListener {
     private Form form3;
     private TextField textField4;
     private TextField textField5;
-    private Form form4;
-    private StringItem stringItem4;
     private Alert alert1;
     private Alert alert;
+    private Alert alert2;
+    private Alert alert4;
+    private Alert alert3;
     private Image image1;
+    private SimpleCancellableTask task;
 //</editor-fold>//GEN-END:|fields|0|
     private Display display;
 
@@ -130,71 +140,85 @@ public class ClientApplet extends MIDlet implements CommandListener {
         if (displayable == alert) {//GEN-BEGIN:|7-commandAction|1|83-preAction
             if (command == okCommand7) {//GEN-END:|7-commandAction|1|83-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|2|83-postAction
+                switchDisplayable(null, getForm1());//GEN-LINE:|7-commandAction|2|83-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|3|35-preAction
+            }//GEN-BEGIN:|7-commandAction|3|106-preAction
+        } else if (displayable == alert2) {
+            if (command == okCommand9) {//GEN-END:|7-commandAction|3|106-preAction
+                // write pre-action user code here
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|4|106-postAction
+                // write post-action user code here
+            }//GEN-BEGIN:|7-commandAction|5|119-preAction
+        } else if (displayable == alert3) {
+            if (command == okCommand12) {//GEN-END:|7-commandAction|5|119-preAction
+                // write pre-action user code here
+//GEN-LINE:|7-commandAction|6|119-postAction
+                // write post-action user code here
+            }//GEN-BEGIN:|7-commandAction|7|114-preAction
+        } else if (displayable == alert4) {
+            if (command == okCommand11) {//GEN-END:|7-commandAction|7|114-preAction
+                // write pre-action user code here
+                switchDisplayable(null, getForm3());//GEN-LINE:|7-commandAction|8|114-postAction
+                // write post-action user code here
+            }//GEN-BEGIN:|7-commandAction|9|35-preAction
         } else if (displayable == form) {
-            if (command == ExistingUser) {//GEN-END:|7-commandAction|3|35-preAction
+            if (command == ExistingUser) {//GEN-END:|7-commandAction|9|35-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|4|35-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|10|35-postAction
                 // write post-action user code here
-            } else if (command == Exit) {//GEN-LINE:|7-commandAction|5|19-preAction
+            } else if (command == Exit) {//GEN-LINE:|7-commandAction|11|19-preAction
                 // write pre-action user code here
-                exitMIDlet();//GEN-LINE:|7-commandAction|6|19-postAction
+                exitMIDlet();//GEN-LINE:|7-commandAction|12|19-postAction
                 // write post-action user code here
-            } else if (command == NewUser) {//GEN-LINE:|7-commandAction|7|33-preAction
+            } else if (command == NewUser) {//GEN-LINE:|7-commandAction|13|33-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm1());//GEN-LINE:|7-commandAction|8|33-postAction
+                switchDisplayable(null, getForm1());//GEN-LINE:|7-commandAction|14|33-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|9|25-preAction
+            }//GEN-BEGIN:|7-commandAction|15|25-preAction
         } else if (displayable == form1) {
-            if (command == backCommand) {//GEN-END:|7-commandAction|9|25-preAction
+            if (command == backCommand) {//GEN-END:|7-commandAction|15|25-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|10|25-postAction
+                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|16|25-postAction
                 // write post-action user code here
-            } else if (command == okCommand1) {//GEN-LINE:|7-commandAction|11|45-preAction
+            } else if (command == okCommand1) {//GEN-LINE:|7-commandAction|17|45-preAction
                 // write pre-action user code here
-                switchDisplayable(getAlert(), getForm1());//GEN-LINE:|7-commandAction|12|45-postAction
+                switchDisplayable(getAlert(), getForm1());//GEN-LINE:|7-commandAction|18|45-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|13|42-preAction
+            }//GEN-BEGIN:|7-commandAction|19|42-preAction
         } else if (displayable == form2) {
-            if (command == backCommand1) {//GEN-END:|7-commandAction|13|42-preAction
+            if (command == backCommand1) {//GEN-END:|7-commandAction|19|42-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|14|42-postAction
+                switchDisplayable(null, getForm());//GEN-LINE:|7-commandAction|20|42-postAction
                 // write post-action user code here
-            } else if (command == okCommand) {//GEN-LINE:|7-commandAction|15|40-preAction
+            } else if (command == okCommand) {//GEN-LINE:|7-commandAction|21|40-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm3());//GEN-LINE:|7-commandAction|16|40-postAction
+                switchDisplayable(getAlert2(), getForm3());//GEN-LINE:|7-commandAction|22|40-postAction
                 // write post-action user code here
-            } else if (command == okCommand4) {//GEN-LINE:|7-commandAction|17|65-preAction
+            } else if (command == okCommand4) {//GEN-LINE:|7-commandAction|23|116-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm4());//GEN-LINE:|7-commandAction|18|65-postAction
+                switchDisplayable(getAlert3(), getForm2());//GEN-LINE:|7-commandAction|24|116-postAction
                 // write post-action user code here
-            } else if (command == okCommand8) {//GEN-LINE:|7-commandAction|19|86-preAction
+            } else if (command == okCommand8) {//GEN-LINE:|7-commandAction|25|86-preAction
                 // write pre-action user code here
-                switchDisplayable(getAlert1(), getForm());//GEN-LINE:|7-commandAction|20|86-postAction
+                switchDisplayable(getAlert1(), getForm());//GEN-LINE:|7-commandAction|26|86-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|21|56-preAction
+            }//GEN-BEGIN:|7-commandAction|27|56-preAction
         } else if (displayable == form3) {
-            if (command == backCommand2) {//GEN-END:|7-commandAction|21|56-preAction
+            if (command == backCommand2) {//GEN-END:|7-commandAction|27|56-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|22|56-postAction
+                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|28|56-postAction
                 // write post-action user code here
-            } else if (command == okCommand2) {//GEN-LINE:|7-commandAction|23|58-preAction
+            } else if (command == okCommand2) {//GEN-LINE:|7-commandAction|29|58-preAction
                 // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|24|58-postAction
+                switchDisplayable(getAlert4(), getForm2());//GEN-LINE:|7-commandAction|30|58-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|25|69-preAction
-        } else if (displayable == form4) {
-            if (command == okCommand5) {//GEN-END:|7-commandAction|25|69-preAction
-                // write pre-action user code here
-                switchDisplayable(null, getForm2());//GEN-LINE:|7-commandAction|26|69-postAction
-                // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|27|7-postCommandAction
-        }//GEN-END:|7-commandAction|27|7-postCommandAction
+            }//GEN-BEGIN:|7-commandAction|31|7-postCommandAction
+        }//GEN-END:|7-commandAction|31|7-postCommandAction
         // write post-action user code here
-    }//GEN-BEGIN:|7-commandAction|28|
-//</editor-fold>//GEN-END:|7-commandAction|28|
+    }//GEN-BEGIN:|7-commandAction|32|
+//</editor-fold>//GEN-END:|7-commandAction|32|
+
+
 
 //<editor-fold defaultstate="collapsed" desc=" Generated Getter: Exit ">//GEN-BEGIN:|18-getter|0|18-preInit
     /**
@@ -347,14 +371,17 @@ public class ClientApplet extends MIDlet implements CommandListener {
      */
     public Form getForm2() {
         if (form2 == null) {//GEN-END:|37-getter|0|37-preInit
+            Alert alert1 = null;
+            String Pass;
             // write pre-init user code here
             form2 = new Form("Hello!", new Item[]{getStringItem3(), getTextField3()});//GEN-BEGIN:|37-getter|1|37-postInit
             form2.addCommand(getOkCommand());
             form2.addCommand(getBackCommand1());
-            form2.addCommand(getOkCommand4());
             form2.addCommand(getOkCommand8());
+            form2.addCommand(getOkCommand4());
             form2.setCommandListener(this);//GEN-END:|37-getter|1|37-postInit
-            // write post-init user code here
+            
+            
         }//GEN-BEGIN:|37-getter|2|
         return form2;
     }
@@ -634,6 +661,9 @@ public class ClientApplet extends MIDlet implements CommandListener {
             form3.addCommand(getOkCommand2());
             form3.setCommandListener(this);//GEN-END:|53-getter|1|53-postInit
             // write post-init user code here
+            
+            
+            
         }//GEN-BEGIN:|53-getter|2|
         return form3;
     }
@@ -647,7 +677,7 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public TextField getTextField4() {
         if (textField4 == null) {//GEN-END:|74-getter|0|74-preInit
             // write pre-init user code here
-            textField4 = new TextField("Phone Numberto pay to", null, 32, TextField.ANY);//GEN-LINE:|74-getter|1|74-postInit
+            textField4 = new TextField("Phone Numberto pay to", null, 32, TextField.PHONENUMBER);//GEN-LINE:|74-getter|1|74-postInit
             // write post-init user code here
         }//GEN-BEGIN:|74-getter|2|
         return textField4;
@@ -662,44 +692,16 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public TextField getTextField5() {
         if (textField5 == null) {//GEN-END:|75-getter|0|75-preInit
             // write pre-init user code here
-            textField5 = new TextField("Amount", null, 32, TextField.ANY);//GEN-LINE:|75-getter|1|75-postInit
+            textField5 = new TextField("Amount", null, 32, TextField.NUMERIC);//GEN-LINE:|75-getter|1|75-postInit
             // write post-init user code here
         }//GEN-BEGIN:|75-getter|2|
         return textField5;
     }
 //</editor-fold>//GEN-END:|75-getter|2|
 
-//<editor-fold defaultstate="collapsed" desc=" Generated Getter: form4 ">//GEN-BEGIN:|66-getter|0|66-preInit
-    /**
-     * Returns an initiliazed instance of form4 component.
-     * @return the initialized component instance
-     */
-    public Form getForm4() {
-        if (form4 == null) {//GEN-END:|66-getter|0|66-preInit
-            // write pre-init user code here
-            form4 = new Form("Account Balance", new Item[]{getStringItem4()});//GEN-BEGIN:|66-getter|1|66-postInit
-            form4.addCommand(getOkCommand5());
-            form4.setCommandListener(this);//GEN-END:|66-getter|1|66-postInit
-            // write post-init user code here
-        }//GEN-BEGIN:|66-getter|2|
-        return form4;
-    }
-//</editor-fold>//GEN-END:|66-getter|2|
 
-//<editor-fold defaultstate="collapsed" desc=" Generated Getter: stringItem4 ">//GEN-BEGIN:|73-getter|0|73-preInit
-    /**
-     * Returns an initiliazed instance of stringItem4 component.
-     * @return the initialized component instance
-     */
-    public StringItem getStringItem4() {
-        if (stringItem4 == null) {//GEN-END:|73-getter|0|73-preInit
-            // write pre-init user code here
-            stringItem4 = new StringItem("Dear User", "Your account balnce is Rs. *****.**");//GEN-LINE:|73-getter|1|73-postInit
-            // write post-init user code here
-        }//GEN-BEGIN:|73-getter|2|
-        return stringItem4;
-    }
-//</editor-fold>//GEN-END:|73-getter|2|
+
+
 
 //<editor-fold defaultstate="collapsed" desc=" Generated Getter: textField6 ">//GEN-BEGIN:|79-getter|0|79-preInit
     /**
@@ -756,17 +758,17 @@ public class ClientApplet extends MIDlet implements CommandListener {
             // write pre-init user code here
             String k;
             k =getTextField().getString();
-            
-       
+
+
             if (k.length() > 0 && getTextField6().getString().length() > 0 &&  getTextField2().getString().length() == 10 && getTextField7().getString().length() > 0)
             {
                 if (k.endsWith("@iiitd.ac.in"));
                 else
                    // k.concat("@iiitd.ac.in");
                     getTextField().setString(k.concat("@iiitd.ac.in"));
-                
-                messege = "mbb_REG_"+getTextField().getString()+"_"+getTextField6().getString()+"_"+getTextField2().getString()+"_"+getTextField7().getString();
-                /*
+
+                messege = "pm_REG_"+getTextField().getString()+"_"+getTextField6().getString()+"_"+getTextField7().getString();
+                dStore(textField7.getString());
                 try {
                               clientConn=(MessageConnection)Connector.open("sms://"+server);
                         }
@@ -789,10 +791,10 @@ public class ClientApplet extends MIDlet implements CommandListener {
                               alert.setString("Unable to send");
                               display.setCurrent(alert);
                         }
-                     
-                     try{   
+/*
+                     try{
 			 clientConn.setMessageListener(
-				new MessageListener() 
+				new MessageListener()
 				 {
                                      public void notifyIncomingMessage(MessageConnection clientConn)
 					 {
@@ -804,7 +806,10 @@ public class ClientApplet extends MIDlet implements CommandListener {
 							 reply = tmsg.getPayloadText();
 							 System.out.println(tmsg.getPayloadText());
                                                          if (reply.startsWith("OK"))
+                                                         {
                                                                 s = " Registration Successfull!!\nPlease Deposit the starting amount to activate your account.!!";
+                                                                dStore(textField7.getString());
+                                                         }
                                                          else if (reply.startsWith("Fail"))
                                                                  s = "Registration unsuccessfull!\n Please contact the adminisstration or Try Again.";
                                                          //else
@@ -813,39 +818,50 @@ public class ClientApplet extends MIDlet implements CommandListener {
 				      	    }
 					    catch(Exception e)
 					    {
-										 
+                                                e.printStackTrace();
+
                             		    }
                        		         }
                 		 }
-        		   );  
+        		   );
 		      }
 		      catch(Exception e)
 	      	      {
+                          e.printStackTrace();
 
-		      }
-				 
-            */
+		      }*/
 
-	 s = "Data Sent. Awaiting reply!!";
-               System.out.println(getTextField().getString());
-                
+            
+
+	 //s = "Data Sent. Awaiting reply!!";
+             //  System.out.println(getTextField().getString());
+
             }
-               
+
             else
                 if(getTextField2().getString().length()>0 && getTextField2().getString().length()!=10)
+                {
                     s = "Invalid phone number";
-                 else
+                    alert = new Alert("alert", s, null, null);
+                    alert.addCommand(getOkCommand7());
+                    alert.setCommandListener(this);
+                    alert.setTimeout(Alert.FOREVER);
+                }
+                else
+                {
                     s = "Kindly fill all entries correctly!!!";
+                    alert = new Alert("alert", s, null, null);
+                    alert.addCommand(getOkCommand7());
+                    alert.setCommandListener(this);
+                    alert.setTimeout(Alert.FOREVER);
+                }
             /*
-            alert = new Alert ("alert", "", null, null);//GEN-BEGIN:|81-getter|1|81-postInit
+            alert = new Alert ("alert", "This is Alert", null, null);//GEN-BEGIN:|81-getter|1|81-postInit
             alert.addCommand (getOkCommand7 ());
             alert.setCommandListener (this);
             alert.setTimeout (Alert.FOREVER);//GEN-END:|81-getter|1|81-postInit
             */
-            alert = new Alert("alert", s, null, null);
-            alert.addCommand(getOkCommand7());
-            alert.setCommandListener(this);
-            alert.setTimeout(Alert.FOREVER);
+            
             // write post-init user code here
         }//GEN-BEGIN:|81-getter|2|
         return alert;
@@ -882,6 +898,264 @@ public class ClientApplet extends MIDlet implements CommandListener {
         return alert1;
     }
 //</editor-fold>//GEN-END:|87-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: alert2 ">//GEN-BEGIN:|94-getter|0|94-preInit
+    /**
+     * Returns an initiliazed instance of alert2 component.
+     * @return the initialized component instance
+     */
+    public Alert getAlert2() {
+        if (alert2 == null) {//GEN-END:|94-getter|0|94-preInit
+            // write pre-init user code here
+            //Alert nalert=null;
+            String Pass = "";
+            String msg = "";
+            try {
+                rstore = RecordStore.openRecordStore("Store", true);
+                
+                if (getTextField3().getString().length() <= 0)
+                {
+                    msg = "Please Enter Password!";
+                    alert2 = new Alert("Warning",msg,null,null);
+                    alert2.addCommand(getOkCommand9());
+                    alert2.setCommandListener(this);
+                    alert2.setTimeout(Alert.FOREVER);
+                }
+                else if (rstore.getNumRecords() == 0)
+                {
+                    msg = "Please Register";
+                    alert2 = new Alert("Warning",msg,null,null);
+                    alert2.addCommand(getOkCommand9());
+                    alert2.setCommandListener(this);
+                    alert2.setTimeout(Alert.FOREVER);
+                }
+                else
+                    Pass = new String (rstore.getRecord(0));
+                
+                if (Equals(Pass, getTextField3().getString()) == false)
+                {
+                    msg = "Incorrect Password!";
+                    alert2 = new Alert("Warning",msg,null,null);
+                    alert2.addCommand(getOkCommand9());
+                    alert2.setCommandListener(this);
+                    alert2.setTimeout(Alert.FOREVER);
+                }
+                    
+            } catch (RecordStoreException ex) {
+                ex.printStackTrace();
+            
+            }
+            
+            
+            
+            
+            /*
+            alert2 = new Alert ("alert2");//GEN-BEGIN:|94-getter|1|94-postInit
+            alert2.addCommand (getOkCommand9 ());
+            alert2.setCommandListener (this);
+            alert2.setTimeout (Alert.FOREVER);//GEN-END:|94-getter|1|94-postInit
+            // write post-init user code here*/
+        }//GEN-BEGIN:|94-getter|2|
+        return alert2;
+    }
+//</editor-fold>//GEN-END:|94-getter|2|
+
+
+
+
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: task ">//GEN-BEGIN:|101-getter|0|101-preInit
+    /**
+     * Returns an initiliazed instance of task component.
+     * @return the initialized component instance
+     */
+    public SimpleCancellableTask getTask() {
+        if (task == null) {//GEN-END:|101-getter|0|101-preInit
+            // write pre-init user code here
+            
+            
+            task = new SimpleCancellableTask();//GEN-BEGIN:|101-getter|1|101-execute
+            task.setExecutable(new org.netbeans.microedition.util.Executable() {
+
+                public void execute() throws Exception {//GEN-END:|101-getter|1|101-execute
+// write task-execution user code here
+                    
+                    
+                }//GEN-BEGIN:|101-getter|2|101-postInit
+            });//GEN-END:|101-getter|2|101-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|101-getter|3|
+        return task;
+    }
+//</editor-fold>//GEN-END:|101-getter|3|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: okCommand9 ">//GEN-BEGIN:|105-getter|0|105-preInit
+    /**
+     * Returns an initiliazed instance of okCommand9 component.
+     * @return the initialized component instance
+     */
+    public Command getOkCommand9() {
+        if (okCommand9 == null) {//GEN-END:|105-getter|0|105-preInit
+            // write pre-init user code here
+            okCommand9 = new Command("Ok", Command.OK, 0);//GEN-LINE:|105-getter|1|105-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|105-getter|2|
+        return okCommand9;
+    }
+//</editor-fold>//GEN-END:|105-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: alert4 ">//GEN-BEGIN:|109-getter|0|109-preInit
+    /**
+     * Returns an initiliazed instance of alert4 component.
+     * @return the initialized component instance
+     */
+    public Alert getAlert4() {
+        if (alert4 == null) {//GEN-END:|109-getter|0|109-preInit
+            String msg ="";
+            
+            if (getTextField4().getString().length()<=0)
+            {
+                msg = "Enter Phone number!";
+                alert4 = new Alert("Warning",msg,null,null);
+                alert4.addCommand(getOkCommand11());
+                alert4.setCommandListener(this);
+                alert4.setTimeout(Alert.FOREVER);
+            }
+            if (getTextField5().getString().length()<=0)
+            {
+                msg = "Enter Amount!";
+                alert4 = new Alert("Warning",msg,null,null);
+                alert4.addCommand(getOkCommand11());
+                alert4.setCommandListener(this);
+                alert4.setTimeout(Alert.FOREVER);
+            }
+            else
+            {
+            messege = "pm_PAY_"+getTextField4().getString()+"_"+getTextField5().getString();
+            
+            try {
+                              clientConn=(MessageConnection)Connector.open("sms://"+server);
+                        }
+                        catch(Exception e) {
+                              alert = new Alert("Alert");
+                              alert.setString("Unable to connect to Station because of network problem");
+                              alert.setTimeout(2000);
+                              display.setCurrent(alert);
+                        }
+                        try {
+                              TextMessage textmessage = (TextMessage) clientConn.newMessage(MessageConnection.TEXT_MESSAGE);
+                              textmessage.setAddress("sms://"+server);
+                              textmessage.setPayloadText(messege);
+                              clientConn.send(textmessage);
+                        }
+                        catch(Exception e)
+                        {
+                              Alert alert=new Alert("Alert","",null,AlertType.INFO);
+                              alert.setTimeout(Alert.FOREVER);
+                              alert.setString("Unable to send");
+                              display.setCurrent(alert);
+                        }
+            }
+            /*
+            alert4 = new Alert ("alert4", "This is Alert", null, null);//GEN-BEGIN:|109-getter|1|109-postInit
+            alert4.addCommand (getOkCommand11 ());
+            alert4.setCommandListener (this);
+            alert4.setTimeout (Alert.FOREVER);//GEN-END:|109-getter|1|109-postInit
+            // write post-init user code here*/
+        }//GEN-BEGIN:|109-getter|2|
+        return alert4;
+    }
+//</editor-fold>//GEN-END:|109-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: okCommand10 ">//GEN-BEGIN:|110-getter|0|110-preInit
+    /**
+     * Returns an initiliazed instance of okCommand10 component.
+     * @return the initialized component instance
+     */
+    public Command getOkCommand10() {
+        if (okCommand10 == null) {//GEN-END:|110-getter|0|110-preInit
+            // write pre-init user code here
+            okCommand10 = new Command("Ok", Command.OK, 0);//GEN-LINE:|110-getter|1|110-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|110-getter|2|
+        return okCommand10;
+    }
+//</editor-fold>//GEN-END:|110-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: okCommand11 ">//GEN-BEGIN:|113-getter|0|113-preInit
+    /**
+     * Returns an initiliazed instance of okCommand11 component.
+     * @return the initialized component instance
+     */
+    public Command getOkCommand11() {
+        if (okCommand11 == null) {//GEN-END:|113-getter|0|113-preInit
+            // write pre-init user code here
+            okCommand11 = new Command("Ok", Command.OK, 0);//GEN-LINE:|113-getter|1|113-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|113-getter|2|
+        return okCommand11;
+    }
+//</editor-fold>//GEN-END:|113-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: okCommand12 ">//GEN-BEGIN:|118-getter|0|118-preInit
+    /**
+     * Returns an initiliazed instance of okCommand12 component.
+     * @return the initialized component instance
+     */
+    public Command getOkCommand12() {
+        if (okCommand12 == null) {//GEN-END:|118-getter|0|118-preInit
+            // write pre-init user code here
+            okCommand12 = new Command("Ok", Command.OK, 0);//GEN-LINE:|118-getter|1|118-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|118-getter|2|
+        return okCommand12;
+    }
+//</editor-fold>//GEN-END:|118-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: alert3 ">//GEN-BEGIN:|115-getter|0|115-preInit
+    /**
+     * Returns an initiliazed instance of alert3 component.
+     * @return the initialized component instance
+     */
+    public Alert getAlert3() {
+        if (alert3 == null) {//GEN-END:|115-getter|0|115-preInit
+            // write pre-init user code here
+            
+            //tring x = textField3.getString();
+            messege = "pm_CBAL";
+            try {
+                              clientConn=(MessageConnection)Connector.open("sms://"+server);
+                        }
+                        catch(Exception e) {
+                              alert = new Alert("Alert");
+                              alert.setString("Unable to connect to Station because of network problem");
+                              alert.setTimeout(2000);
+                              display.setCurrent(alert);
+                        }
+                        try {
+                              TextMessage textmessage = (TextMessage) clientConn.newMessage(MessageConnection.TEXT_MESSAGE);
+                              textmessage.setAddress("sms://"+server);
+                              textmessage.setPayloadText(messege);
+                              clientConn.send(textmessage);
+                        }
+                        catch(Exception e)
+                        {
+                              Alert alert=new Alert("Alert","",null,AlertType.INFO);
+                              alert.setTimeout(Alert.FOREVER);
+                              alert.setString("Unable to send");
+                              display.setCurrent(alert);
+                        }
+            
+            
+            alert3 = new Alert("alert3", "Message sent. Await response.", null, null);//GEN-BEGIN:|115-getter|1|115-postInit
+            alert3.addCommand(getOkCommand12());
+            alert3.setCommandListener(this);
+            alert3.setTimeout(Alert.FOREVER);//GEN-END:|115-getter|1|115-postInit
+            // write post-init user code here
+        }//GEN-BEGIN:|115-getter|2|
+        return alert3;
+    }
+//</editor-fold>//GEN-END:|115-getter|2|
 
     /**
      * Returns a display instance.
@@ -920,6 +1194,37 @@ public class ClientApplet extends MIDlet implements CommandListener {
     public void pauseApp() {
         midletPaused = true;
     }
+    
+    public void dStore(String pass)
+    {
+        try {
+            rstore = RecordStore.openRecordStore("Store", true);
+            byte [] x = pass.getBytes();
+            rstore.addRecord(x, 0, x.length);
+        } catch (RecordStoreException ex) {
+            ex.printStackTrace();
+        }  
+    }
+    
+    private boolean Equals(String x, String y)
+    {
+        boolean val = true;
+        
+        if (x.length() != y.length())
+            return false;
+        else
+            for (int i=0; i<x.length(); i++)
+            {
+                if (x.charAt(i) != y.charAt(i))
+                {
+                    val = false;
+                    break;
+                }
+            }
+        
+        return val;
+    }
+    
 
     /**
      * Called to signal the MIDlet to terminate.
